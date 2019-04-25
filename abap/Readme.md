@@ -12,3 +12,5 @@
 8. Enjoy!
 
 It's so difficult, because SAP is closed system.
+
+You can see the screenshots confirming the correct operation of the program.
