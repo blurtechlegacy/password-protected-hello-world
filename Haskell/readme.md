@@ -1,3 +1,5 @@
-Use make to compile (GHC is required).
+Run make to compile (GHC is required).
+
+Usage: `./hello "<password>"`
 
     password: helloworld
