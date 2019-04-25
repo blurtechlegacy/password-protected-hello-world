@@ -1,9 +1,6 @@
 # Password-protected Hello World
-Password-protected "Hello World" on different programming languages
+
+This repo was create in order to combine all kinds of password-protected Hello Worlds. 
 
 ## Contributing
-- Fork project
-- Create folder "languagename"
-- Write `HelloWorld.ext`
-- Write Readme with instruction for launch
-- Send PR
+[Contribution information](CONTRIBUTING.md)
