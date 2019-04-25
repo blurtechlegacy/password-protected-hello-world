@@ -4,7 +4,8 @@ This repo was create in order to combine all kinds of password-protected Hello W
 
 ## Now implemented
 
-- [x] Rockstar
+- Rockstar
+- Kotlin
 
 ## Contributing
 [Contribution information](CONTRIBUTING.md)
