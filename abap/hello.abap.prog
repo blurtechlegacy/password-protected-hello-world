@@ -1,0 +1,107 @@
+*&---------------------------------------------------------------------*
+*& Report Z_PASSWD_HELLO_WORLD
+*&---------------------------------------------------------------------*
+*& Author: https://github.com/karimphoenix
+*& Date:   25.04.2019
+*&---------------------------------------------------------------------*
+REPORT Z_PASSWD_HELLO_WORLD.
+
+CLASS lcl_passwd DEFINITION DEFERRED.
+CLASS lcl_sayer  DEFINITION DEFERRED.
+
+DATA: go_p TYPE REF TO lcl_passwd "reference to object lcl_password
+    , go_s TYPE REF TO lcl_sayer  "reference to object lcl_sayer
+    .
+
+DATA gv_pass TYPE text VALUE '1234'. "global variable password
+
+sy-title = 'Password-protected "Hello world!"'. "screen name
+
+SELECTION-SCREEN BEGIN OF BLOCK p1 WITH FRAME TITLE sy-title. "selection screen block
+  PARAMETERS: so_func   RADIOBUTTON GROUP uc1 "check password by function
+            , so_class  RADIOBUTTON GROUP uc1 "check password by class
+            , p_pass TYPE text
+            .
+SELECTION-SCREEN END OF BLOCK p1.
+
+
+CLASS lcl_passwd  DEFINITION.
+PUBLIC SECTION.
+  METHODS:
+            check_passwd "method for checking pass
+              IMPORTING
+                i_passwd TYPE text
+              EXPORTING
+                e_ans    TYPE abap_bool
+         .
+PRIVATE SECTION.
+  DATA: passwd TYPE text VALUE '1234' "with initial value
+      .
+
+ENDCLASS.
+
+CLASS lcl_sayer DEFINITION.
+PUBLIC SECTION.
+  DATA hello TYPE string VALUE 'Hello world!'.
+
+  METHODS:
+            say.
+
+ENDCLASS.
+
+CLASS lcl_passwd IMPLEMENTATION.
+  METHOD check_passwd.
+    e_ans = abap_false.
+
+    IF i_passwd EQ me->passwd.
+      e_ans = abap_true.
+    ENDIF.
+  ENDMETHOD.
+ENDCLASS.
+
+CLASS lcl_sayer IMPLEMENTATION.
+  METHOD say.
+    DATA flag TYPE abap_bool.
+    go_p->check_passwd( EXPORTING i_passwd = p_pass
+                        IMPORTING e_ans    = flag ).
+    IF flag = abap_true.
+      WRITE:  me->hello
+           , / 'By class!'
+           .
+    ELSE.
+      WRITE: / 'Wrong password!'
+           .
+    ENDIF.
+  ENDMETHOD.
+
+ENDCLASS.
+
+FORM check_and_say.
+  IF p_pass EQ gv_pass.
+    WRITE: / 'Hello world!'
+         , / 'By function!'
+         .
+    ELSE.
+      WRITE: / 'Wrong password!'
+           .
+  ENDIF.
+
+ENDFORM.
+
+INITIALIZATION. "create objects of class
+  IF go_p IS INITIAL.
+    CREATE OBJECT go_p.
+  ENDIF.
+  IF go_s IS INITIAL.
+    CREATE OBJECT go_s.
+  ENDIF.
+
+START-OF-SELECTION.
+  IF so_func = 'X'.
+    PERFORM check_and_say.
+  ELSEIF so_class = 'X'.
+      go_s->say( ).
+  ENDIF.
+
+
+END-OF-SELECTION.
