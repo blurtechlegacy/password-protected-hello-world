@@ -6,7 +6,7 @@ int main()
     int pass;
     printf("Enter password:");
     scanf("%d", &pass);
-    if (pass = 1234){ 
+    if (pass == 1234){ 
     printf("Hello World");
     }
     else{ printf("Incorrect password");
