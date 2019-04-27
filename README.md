@@ -16,6 +16,7 @@ This repo was create in order to combine all kinds of password-protected Hello W
 - C#
 - Perl
 - Haskell
+- F#
 
 ## Contributing
 [Contribution information](CONTRIBUTING.md)
