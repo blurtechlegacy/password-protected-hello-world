@@ -17,6 +17,6 @@
 
 ## Commits and issues style
 
-Only english language in commuts, issues and PRs.
+Only english language in commits, issues and PRs.
 
 
