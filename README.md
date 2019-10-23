@@ -18,6 +18,7 @@ This repo was created in order to combine all kinds of password-protected "Hello
 - Perl
 - Haskell
 - F#
+- Lua
 - C++
 
 ## Contributing
