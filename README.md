@@ -1,5 +1,4 @@
 # Password-protected Hello World
-[![HitCount](http://hits.dwyl.io/blurtech/password-protected-hello-world.svg)](http://hits.dwyl.io/blurtech/password-protected-hello-world)
 
 This repo was created in order to combine all kinds of password-protected "Hello Worlds". 
 
